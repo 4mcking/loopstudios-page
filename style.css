@@ -37,18 +37,25 @@ header {
   background-image: url('images/mobile/image-hero.jpg');
   background-size: cover;
   background-position: center;
-  height: 650px;
+  height: 100vh; /* Use viewport height for better responsiveness */
+  min-height: 650px; /* Ensure minimum height on larger screens */
   padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative; /* Add this */
+  z-index: 1002; /* Ensure nav is above the mobile menu */
 }
 
 .logo {
   width: 144px;
+  z-index: 1002; /* Ensure logo is above the mobile menu */
 }
 
 .menu-toggle {
@@ -66,18 +73,21 @@ nav {
 }
 
 .hero-text {
-  margin-top: 160px;
+  margin-top: 0; /* Remove top margin */
+  margin-bottom: 40px; /* Add bottom margin */
 }
 
 h1 {
+  font-size: clamp(40px, 5vw, 72px); /* Responsive font size */
+  padding: clamp(24px, 3vw, 40px); /* Responsive padding */
+  max-width: 650px;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
-  font-size: 40px;
   color: var(--white);
   text-transform: uppercase;
   line-height: 1;
   border: 2px solid var(--white);
-  padding: 24px;
+  padding: clamp(24px, 3vw, 40px);
 }
 
 /* Leader section styles */
@@ -88,15 +98,13 @@ h1 {
 
 .leader img {
   width: 100%;
+  max-width: 731px; /* Limit image width on larger screens */
   margin-bottom: 48px;
 }
 
 .leader h2 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 32px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+  font-size: clamp(32px, 4vw, 48px); /* Responsive font size */
+  margin-bottom: clamp(16px, 2vw, 24px); /* Responsive margin */
 }
 
 .leader p {
@@ -107,15 +115,11 @@ h1 {
 .creations {
   padding: 0 24px 96px;
   text-align: center;
-  position: relative;
 }
 
 .creations h2 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
   font-size: 32px;
-  text-transform: uppercase;
-  margin-bottom: 48px;
+  margin-bottom: 48px; /* Increased from the previous value */
 }
 
 .grid {
@@ -194,6 +198,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
 }
 
 .footer-nav li {
@@ -209,6 +214,7 @@ footer {
   margin: 48px 0 16px;
   display: flex;
   justify-content: center;
+  gap: 16px;
 }
 
 .social-icons a {
@@ -265,8 +271,10 @@ footer {
     padding: 160px 165px;
     position: relative;
     text-align: left;
-    display: flex;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 30px;
   }
 
   .leader img {
@@ -300,7 +308,6 @@ footer {
   .creations {
     padding: 0 165px 184px;
     text-align: left;
-    position: static;
   }
 
   .creations-header {
@@ -323,7 +330,7 @@ footer {
   }
 
   .grid-item {
-    height: auto;
+    height: 450px;
   }
 
   .grid-item img {
@@ -369,6 +376,7 @@ footer {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    gap: 32px;
   }
 
   .footer-nav li {
@@ -380,6 +388,7 @@ footer {
     display: flex;
     justify-content: flex-end;
     margin: 0 0 24px;
+    gap: 16px;
   }
 
   .social-icons a {
@@ -441,4 +450,16 @@ footer {
   font-size: 24px;
   text-transform: uppercase;
   color: var(--white);
+}
+
+/* Add this new style */
+.nav-links.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 96px; /* Adjust this value to match your header height */
+  background-color: var(--black);
+  z-index: 1001;
 }
