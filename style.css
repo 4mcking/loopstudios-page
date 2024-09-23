@@ -43,9 +43,6 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 1002; /* Ensure header is above the mobile menu */
 }
 
 nav {
@@ -183,8 +180,6 @@ footer {
   background-color: var(--black);
   padding: 56px 24px;
   text-align: center;
-  position: relative;
-  z-index: 1;
 }
 
 .footer-logo {
