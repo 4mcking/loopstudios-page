@@ -134,6 +134,7 @@
     const navLinks = document.querySelector('.nav-links');
     const iconHamburger = document.querySelector('.icon-hamburger');
     const iconClose = document.querySelector('.icon-close');
+    const header = document.querySelector('header');
 
     // Initially hide the close icon and show the hamburger icon
     iconClose.style.display = 'none';
@@ -141,6 +142,7 @@
 
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+      header.classList.toggle('menu-active'); // Add this line
       if (navLinks.classList.contains('active')) {
         iconHamburger.style.display = 'none';
         iconClose.style.display = 'block';

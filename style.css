@@ -466,14 +466,18 @@ footer {
   color: var(--white);
 }
 
-/* Add this new style */
-.nav-links.active::before {
-  content: '';
-  position: absolute;
+/* Make the header sticky only when the mobile menu is active */
+header.menu-active {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 96px; /* Adjust this value to match your header height */
-  background-color: var(--black);
-  z-index: 1001;
+  z-index: 1002; /* Ensure header is above the mobile menu */
+  background-color: var(--black); /* Ensure the header has a background */
+}
+
+/* Ensure footer is not visible when scrolling */
+footer {
+  position: relative;
+  z-index: 1;
 }
